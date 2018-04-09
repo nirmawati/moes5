@@ -30,9 +30,9 @@ public class chatroom extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatroom);
-        btn_send_msg = (Button)findViewById(R.id.button);
-        input_msg = (EditText)findViewById(R.id.editText);
-        chat_conversation = (TextView)findViewById(R.id.textView);
+        btn_send_msg = findViewById(R.id.button);
+        input_msg = findViewById(R.id.editText);
+        chat_conversation = findViewById(R.id.textView);
         user_name = getIntent().getExtras().get("user_name").toString();
         room_name = getIntent().getExtras().get("room_name").toString();
         setTitle("Room - "+room_name);

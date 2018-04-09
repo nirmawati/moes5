@@ -49,7 +49,7 @@
 
             android:id="@+id/button"
             style="?android:attr/borderlessButtonStyle"
-            android:drawableLeft="@drawable/ic_send_black_24dp"
+            android:drawableLeft="@drawable/ic_launcher_background"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true" />

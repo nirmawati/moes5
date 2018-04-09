@@ -38,7 +38,7 @@
         android:id="@+id/btnAdd_room"
         android:layout_gravity="right"
         style="?android:attr/borderlessButtonStyle"
-        android:drawableLeft="@drawable/ic_add_black_24dp"
+        android:drawableLeft="@drawable/ic_launcher_background"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true" />
