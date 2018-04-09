@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "230064653852",
+    "firebase_url": "https://moes5-a3d19.firebaseio.com",
+    "project_id": "moes5-a3d19",
+    "storage_bucket": "moes5-a3d19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230064653852:android:bb68fdcc9420f99f",
+        "android_client_info": {
+          "package_name": "com.example.nirma.moes5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230064653852-tvfsoqt0ocjr7pdflci3qej5rqli86ad.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nirma.moes5",
+            "certificate_hash": "a37622571b6117c1457b13dc8ac7d005f97dcd04"
+          }
+        },
+        {
+          "client_id": "230064653852-tqdkr7ofdlbr09r09qvtnr76570mchkh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0BbAL1iuafIYimfecsOTS39AlXE3pHyQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230064653852-tqdkr7ofdlbr09r09qvtnr76570mchkh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
