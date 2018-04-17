@@ -2,6 +2,8 @@ package com.example.nirma.moes5;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,8 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private String name;
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference().getRoot();
 
+    private static int SIGN_IN_REQUEST_CODE = 1;
+
     private ArrayAdapter<String> arrayAdapter;
     private ArrayList<String> list_of_rooms = new ArrayList();
     @Override
@@ -46,6 +53,32 @@ public class MainActivity extends AppCompatActivity {
 
         arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list_of_rooms);
         listView.setAdapter(arrayAdapter);
+
+        if(FirebaseAuth.getInstance().getCurrentUser() == null) {
+            // Start sign in/sign up activity
+            startActivityForResult(
+                    AuthUI.getInstance()
+                            .createSignInIntentBuilder()
+                            .build(),
+                    SIGN_IN_REQUEST_CODE
+            );
+        } else {
+            // User is already signed in. Therefore, display
+            // a welcome Toast
+            Toast.makeText(this,
+                    "Welcome " + FirebaseAuth.getInstance()
+                            .getCurrentUser()
+                            .getDisplayName(),
+                    Toast.LENGTH_LONG)
+                    .show();
+
+            // Load chat room contents
+            displayChatMessages();
+        }
+
+
+
+
 
         request_user_name();
         add_room.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +125,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == SIGN_IN_REQUEST_CODE) {
+            if(resultCode == RESULT_OK) {
+                Toast.makeText(this,
+                        "Successfully signed in. Welcome!",
+                        Toast.LENGTH_LONG)
+                        .show();
+                displayChatMessages();
+            } else {
+                Toast.makeText(this,
+                        "We couldn't sign you in. Please try again later.",
+                        Toast.LENGTH_LONG)
+                        .show();
+
+                // Close the app
+                finish();
+            }
+        }
+
+    }
+
+    private void displayChatMessages() {
+
+    }
+
     private void request_user_name() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Enter Name");
@@ -112,4 +173,5 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.show();
     }
+
 }
